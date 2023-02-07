@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Court.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/background.jpg" type="Texture" id=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+margin_top = -10.0
+margin_right = 1022.0
+margin_bottom = 531.0
+texture = ExtResource( 2 )
+stretch_mode = 1
+
+[node name="Court" parent="." instance=ExtResource( 1 )]
