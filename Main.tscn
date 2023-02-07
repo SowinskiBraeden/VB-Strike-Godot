@@ -9,6 +9,22 @@ extents = Vector2( 518.5, 10 )
 
 [node name="Node2D" type="Node2D"]
 
+[node name="OuterBound" type="StaticBody2D" parent="."]
+
+[node name="Top" type="CollisionShape2D" parent="OuterBound"]
+position = Vector2( 508.5, 0 )
+shape = SubResource( 1 )
+
+[node name="Left" type="CollisionShape2D" parent="OuterBound"]
+position = Vector2( -3, 516 )
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="Right" type="CollisionShape2D" parent="OuterBound"]
+position = Vector2( 1023, 514 )
+rotation = 1.5708
+shape = SubResource( 1 )
+
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 151, 300 )
 scale = Vector2( 0.75, 0.75 )
@@ -24,19 +40,3 @@ stretch_mode = 1
 
 [node name="Court" parent="." instance=ExtResource( 1 )]
 z_index = -1
-
-[node name="OuterBound" type="Area2D" parent="."]
-
-[node name="Top" type="CollisionShape2D" parent="OuterBound"]
-position = Vector2( 508.5, 0 )
-shape = SubResource( 1 )
-
-[node name="Left" type="CollisionShape2D" parent="OuterBound"]
-position = Vector2( -3, 516 )
-rotation = 1.5708
-shape = SubResource( 1 )
-
-[node name="Right" type="CollisionShape2D" parent="OuterBound"]
-position = Vector2( 1023, 514 )
-rotation = 1.5708
-shape = SubResource( 1 )
