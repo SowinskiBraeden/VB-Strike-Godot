@@ -5,7 +5,7 @@
 [ext_resource path="res://sprites/character/eye_human_green.png" type="Texture" id=3]
 [ext_resource path="res://sprites/character/mouthG.png" type="Texture" id=4]
 [ext_resource path="res://sprites/character/arm_blueA.png" type="Texture" id=5]
-[ext_resource path="res://Player.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=6]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 121.0
@@ -23,21 +23,12 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="main body" type="Sprite" parent="."]
+[node name="Body" type="Sprite" parent="."]
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="ArmBlueA" type="Sprite" parent="main body"]
-position = Vector2( 102, 151 )
-scale = Vector2( 0.835366, 0.852273 )
-texture = ExtResource( 5 )
-
-[node name="Sprite" type="Sprite" parent="main body"]
-
-[node name="body 1" type="Sprite" parent="main body"]
-
-[node name="BodyBlueB" type="Sprite" parent="main body/body 1"]
+[node name="Head" type="Sprite" parent="Body"]
 position = Vector2( 12, 75 )
 scale = Vector2( 0.963542, 0.950521 )
 texture = ExtResource( 1 )
@@ -45,47 +36,65 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Arm2" type="Sprite" parent="main body"]
-
-[node name="Sprite2" type="Sprite" parent="main body"]
-
-[node name="LegBlueA" type="Sprite" parent="main body/Sprite2"]
-position = Vector2( 43, 203 )
-scale = Vector2( 0.8125, 0.919162 )
+[node name="ArmRight" type="Sprite" parent="Body"]
+position = Vector2( 102, 151 )
+scale = Vector2( 0.835366, 0.852273 )
 z_index = -1
-texture = ExtResource( 2 )
+texture = ExtResource( 5 )
 
-[node name="Sprite3" type="Sprite" parent="main body"]
+[node name="Position2D" type="Position2D" parent="Body/ArmRight"]
+position = Vector2( -19.1533, 83.3066 )
+__meta__ = {
+"_edit_bone_": true
+}
 
-[node name="LegBlueA" type="Sprite" parent="main body/Sprite3"]
-position = Vector2( -6, 203 )
-scale = Vector2( 0.8125, 0.92515 )
-z_index = -1
-texture = ExtResource( 2 )
-
-[node name="Sprite4" type="Sprite" parent="main body"]
-
-[node name="EyeHumanGreen" type="Sprite" parent="main body/Sprite4"]
-position = Vector2( -31, 51 )
-scale = Vector2( 0.867188, 0.862319 )
-texture = ExtResource( 3 )
-
-[node name="Sprite5" type="Sprite" parent="main body"]
-
-[node name="EyeHumanGreen" type="Sprite" parent="main body/Sprite5"]
-position = Vector2( 54, 48 )
-scale = Vector2( 0.867188, 0.862319 )
-texture = ExtResource( 3 )
-
-[node name="Sprite6" type="Sprite" parent="main body"]
-
-[node name="ArmBlueA" type="Sprite" parent="."]
+[node name="ArmLeft" type="Sprite" parent="Body"]
 position = Vector2( -78, 159 )
 scale = Vector2( 0.780488, 0.90767 )
 z_index = -1
 texture = ExtResource( 5 )
 flip_h = true
 
-[node name="MouthG" type="Sprite" parent="."]
+[node name="Position2D" type="Position2D" parent="Body/ArmLeft"]
+position = Vector2( 17.9374, 82.6292 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="LegRight" type="Sprite" parent="Body"]
+position = Vector2( 43, 203 )
+scale = Vector2( 0.8125, 0.919162 )
+z_index = -1
+texture = ExtResource( 2 )
+
+[node name="Position2D" type="Position2D" parent="Body/LegRight"]
+position = Vector2( -3.69232, 79.4202 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="LegLeft" type="Sprite" parent="Body"]
+position = Vector2( -6, 203 )
+scale = Vector2( 0.8125, 0.92515 )
+z_index = -1
+texture = ExtResource( 2 )
+
+[node name="Position2D" type="Position2D" parent="Body/LegLeft"]
+position = Vector2( -14.7692, 83.2297 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="EyeLeft" type="Sprite" parent="Body"]
+position = Vector2( -31, 51 )
+scale = Vector2( 0.867188, 0.862319 )
+texture = ExtResource( 3 )
+
+[node name="EyeRight" type="Sprite" parent="Body"]
+position = Vector2( 54, 48 )
+scale = Vector2( 0.867188, 0.862319 )
+texture = ExtResource( 3 )
+
+[node name="Mouth" type="Sprite" parent="Body"]
 position = Vector2( 15, 134 )
 texture = ExtResource( 4 )
