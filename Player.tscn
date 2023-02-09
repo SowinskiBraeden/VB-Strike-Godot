@@ -42,12 +42,6 @@ scale = Vector2( 0.835366, 0.852273 )
 z_index = -1
 texture = ExtResource( 5 )
 
-[node name="Position2D" type="Position2D" parent="Body/ArmRight"]
-position = Vector2( -19.1533, 83.3066 )
-__meta__ = {
-"_edit_bone_": true
-}
-
 [node name="ArmLeft" type="Sprite" parent="Body"]
 position = Vector2( -78, 159 )
 scale = Vector2( 0.780488, 0.90767 )
@@ -55,35 +49,17 @@ z_index = -1
 texture = ExtResource( 5 )
 flip_h = true
 
-[node name="Position2D" type="Position2D" parent="Body/ArmLeft"]
-position = Vector2( 17.9374, 82.6292 )
-__meta__ = {
-"_edit_bone_": true
-}
-
 [node name="LegRight" type="Sprite" parent="Body"]
 position = Vector2( 43, 203 )
 scale = Vector2( 0.8125, 0.919162 )
 z_index = -1
 texture = ExtResource( 2 )
 
-[node name="Position2D" type="Position2D" parent="Body/LegRight"]
-position = Vector2( -3.69232, 79.4202 )
-__meta__ = {
-"_edit_bone_": true
-}
-
 [node name="LegLeft" type="Sprite" parent="Body"]
 position = Vector2( -6, 203 )
 scale = Vector2( 0.8125, 0.92515 )
 z_index = -1
 texture = ExtResource( 2 )
-
-[node name="Position2D" type="Position2D" parent="Body/LegLeft"]
-position = Vector2( -14.7692, 83.2297 )
-__meta__ = {
-"_edit_bone_": true
-}
 
 [node name="EyeLeft" type="Sprite" parent="Body"]
 position = Vector2( -31, 51 )
