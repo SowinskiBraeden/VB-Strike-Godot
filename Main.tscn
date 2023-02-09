@@ -26,9 +26,10 @@ rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 151, 300 )
+position = Vector2( 151, 332 )
 scale = Vector2( 0.75, 0.75 )
-z_index = 1
+z_index = 5
+z_as_relative = false
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
