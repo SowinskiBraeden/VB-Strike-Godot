@@ -8,7 +8,6 @@ var velocity: Vector2 = Vector2()
 
 export var PlayerSpeed: int = 125
 export var Smoothness: float = 0.2
-onready var sprite = get_node("Body")
 var jump_allowed_timer: int = 0
 
 func _ready():
@@ -23,12 +22,8 @@ func _physics_process(delta):
 	var direction = 0
 	if Input.is_action_pressed("ui_left"):
 		direction = -1
-		#sprite.set_flip_h(true)
-		sprite.set_scale(Vector2(-1, 1))
 	elif Input.is_action_pressed("ui_right"):
 		direction = 1
-		#sprite.set_flip_h(false)
-		sprite.set_scale(Vector2(1, 1))
 
 	velocity.x = lerp(velocity.x, PlayerSpeed * direction, Smoothness)
 	
@@ -40,7 +35,9 @@ func _physics_process(delta):
 		motion = velocity.slide(collision.normal)
 		velocity = move_and_slide(motion)
 
-		if Input.is_action_pressed("ui_up") and is_jump_allowed():
+		print(collision.collider.name)
+
+		if Input.is_action_pressed("ui_up") and is_jump_allowed() and collision.collider.name == "Court":
 			velocity.y -= JUMP_STRENGTH
 			jump_allowed_timer = CAN_JUMP_TIME_LIMIT
 
