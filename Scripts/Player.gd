@@ -10,6 +10,8 @@ export var PlayerSpeed: int = 125
 export var Smoothness: float = 0.2
 var jump_allowed_timer: int = 0
 
+onready var anim = $AnimationPlayer
+
 func _ready():
 	set_physics_process(true)
 	
@@ -32,12 +34,14 @@ func _physics_process(delta):
 
 	# Are we on the ground
 	if collision:
+
 		motion = velocity.slide(collision.normal)
 		velocity = move_and_slide(motion)
 
 		print(collision.collider.name)
 
 		if Input.is_action_pressed("ui_up") and is_jump_allowed() and collision.collider.name == "Court":
+			anim.play("Jump")
 			velocity.y -= JUMP_STRENGTH
 			jump_allowed_timer = CAN_JUMP_TIME_LIMIT
 
