@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 const GRAVITY: float = 400.0
 const JUMP_STRENGTH: int = 350
-const CAN_JUMP_TIME_LIMIT: float = 1.0 # seconds we are not allowed to jump
+const CAN_JUMP_TIME_LIMIT: int = 1 # seconds we are not allowed to jump
 
 var velocity: Vector2 = Vector2()
 

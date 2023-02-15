@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://sprites/layout.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=6]
@@ -8,6 +8,108 @@ extents = Vector2( 57, 157 )
 
 [sub_resource type="Animation" id=4]
 resource_name = "Idle"
+
+[sub_resource type="Animation" id=5]
+resource_name = "MOve"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Skeleton2D/Hip/Left_leg:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.09238, -14.9935 ), Vector2( 1.09238, -14.9935 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Skeleton2D/Hip/Left_leg:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -256.614, -120.836 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Skeleton2D/Hip/Left_leg/left_calf:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 69.3539, -0.187073 ), Vector2( 69.3539, -0.187073 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Skeleton2D/Hip/Left_leg/left_calf:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.28324, 59.9317 ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Skeleton2D/Hip/Left_leg/left_calf:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 69.3539, -0.187073 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Skeleton2D/Hip/Left_leg/left_calf:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 3.07304 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Skeleton2D/Hip/Left_leg:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1.09238, -14.9935 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Skeleton2D/Hip/Left_leg:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -256.614 ]
+}
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 496, 112 )
@@ -152,13 +254,11 @@ bones = [ "Hip", PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0 ), "Hip/right_leg", Po
 [node name="Hip" type="Bone2D" parent="Skeleton2D"]
 position = Vector2( 13, 127 )
 rotation = -1.57695
-scale = Vector2( 1, 1 )
 rest = Transform2D( -0.00615359, -0.999981, 0.999981, -0.00615359, 13, 127 )
 
 [node name="right_leg" type="Bone2D" parent="Skeleton2D/Hip"]
 position = Vector2( 0.920059, 13.006 )
 rotation = 3.08748
-scale = Vector2( 1, 1 )
 rest = Transform2D( -0.998536, 0.0540863, -0.0540863, -0.998536, 0.920059, 13.006 )
 default_length = 70.0
 
@@ -172,15 +272,16 @@ default_length = 80.0
 [node name="right_foot" type="Bone2D" parent="Skeleton2D/Hip/right_leg/right_calf"]
 position = Vector2( 94.0148, 2.5029 )
 rotation = -0.764454
-scale = Vector2( 1, 1 )
 rest = Transform2D( 0.72176, -0.692143, 0.692143, 0.72176, 94.0148, 2.5029 )
 
 [node name="Left_leg" type="Bone2D" parent="Skeleton2D/Hip"]
 position = Vector2( 1.09238, -14.9935 )
-rotation = -3.03163
-scale = Vector2( 1, 1 )
+rotation = -4.47875
 rest = Transform2D( -0.99396, -0.109741, 0.109741, -0.99396, 1.09238, -14.9935 )
 default_length = 70.0
+__meta__ = {
+"_edit_ik_": true
+}
 
 [node name="left_calf" type="Bone2D" parent="Skeleton2D/Hip/Left_leg"]
 position = Vector2( 69.3539, -0.187073 )
@@ -191,7 +292,6 @@ default_length = 80.0
 [node name="left_foot" type="Bone2D" parent="Skeleton2D/Hip/Left_leg/left_calf"]
 position = Vector2( 93.7314, -2.73077 )
 rotation = -1.09977
-scale = Vector2( 1, 1 )
 rest = Transform2D( 0.4538, -0.891104, 0.891104, 0.4538, 93.7314, -2.73077 )
 
 [node name="Chest" type="Bone2D" parent="Skeleton2D/Hip"]
@@ -206,14 +306,12 @@ rest = Transform2D( 1, 0, 0, 1, 70.9987, 0.436951 )
 [node name="Arm_Left" type="Bone2D" parent="Skeleton2D/Hip/Chest"]
 position = Vector2( 58.1589, -25.6426 )
 rotation = -2.80649
-scale = Vector2( 1, 1 )
 rest = Transform2D( -0.944377, -0.328866, 0.328866, -0.944377, 58.1589, -25.6426 )
 default_length = 50.0
 
 [node name="Forearm_Left" type="Bone2D" parent="Skeleton2D/Hip/Chest/Arm_Left"]
 position = Vector2( 51.2412, 1.52859 )
 rotation = -0.742412
-scale = Vector2( 1, 1 )
 rest = Transform2D( 0.73684, -0.676067, 0.676067, 0.73684, 51.2412, 1.52859 )
 
 [node name="Hand_Left" type="Bone2D" parent="Skeleton2D/Hip/Chest/Arm_Left/Forearm_Left"]
@@ -223,14 +321,12 @@ rest = Transform2D( 1, 0, 0, 1, 36.7599, 0.840359 )
 [node name="Arm_Right" type="Bone2D" parent="Skeleton2D/Hip/Chest"]
 position = Vector2( 57.8881, 18.3566 )
 rotation = 2.88328
-scale = Vector2( 1, 1 )
 rest = Transform2D( -0.966822, 0.25545, -0.25545, -0.966822, 57.8881, 18.3566 )
 default_length = 50.0
 
 [node name="forearm right" type="Bone2D" parent="Skeleton2D/Hip/Chest/Arm_Right"]
 position = Vector2( 46.5721, 0.17984 )
 rotation = -0.109956
-scale = Vector2( 1, 1 )
 rest = Transform2D( 0.993961, -0.109735, 0.109735, 0.993961, 46.5721, 0.17984 )
 default_length = 35.0
 
@@ -240,3 +336,5 @@ rest = Transform2D( 1, 0, 0, 1, 38.2605, 1.06693 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Idle = SubResource( 4 )
+anims/MOve = SubResource( 5 )
+anims/RESET = SubResource( 6 )
