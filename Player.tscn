@@ -1,7 +1,16 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://sprites/layout.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=6]
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 58.75, 57.75 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 103.75, 49.75 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 53, 155 )
 
 [sub_resource type="Animation" id=6]
 resource_name = "Jump"
@@ -784,16 +793,21 @@ tracks/3/keys = {
 position = Vector2( 496, 112 )
 script = ExtResource( 6 )
 
-[node name="ArmRightCollision" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( 37, 47, 55, 104, 36, 109, 20, 50 )
+[node name="BumpBox" type="Area2D" parent="."]
 
-[node name="HeadCollision" type="CollisionPolygon2D" parent="."]
-position = Vector2( -142, -36 )
-polygon = PoolVector2Array( 165, 72, 149, 74, 138, 67, 133, 50, 141, 30, 163, 25, 174, 38 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BumpBox"]
+position = Vector2( 121, 96 )
+shape = SubResource( 9 )
 
-[node name="BodyCollision" type="CollisionPolygon2D" parent="."]
-position = Vector2( -142, -36 )
-polygon = PoolVector2Array( 161, 70, 166, 77, 176, 82, 174, 152, 155, 161, 124, 147, 124, 86, 142, 72, 142, 68 )
+[node name="SetSpiteBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="SetSpiteBox"]
+position = Vector2( 60.25, -56.25 )
+shape = SubResource( 10 )
+
+[node name="BodyCollision" type="CollisionShape2D" parent="."]
+position = Vector2( 10, 148 )
+shape = SubResource( 8 )
 
 [node name="Body" type="Polygon2D" parent="."]
 position = Vector2( -142, -36 )
@@ -930,13 +944,11 @@ bones = [ "Hip", PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0 ), "Hip/right_leg", Po
 [node name="Hip" type="Bone2D" parent="Skeleton2D"]
 position = Vector2( 13, 134 )
 rotation = -1.57695
-scale = Vector2( 1, 1 )
 rest = Transform2D( -0.00615359, -0.999981, 0.999981, -0.00615359, 13, 127 )
 
 [node name="right_leg" type="Bone2D" parent="Skeleton2D/Hip"]
 position = Vector2( 0.920059, 13.006 )
 rotation = 2.77638
-scale = Vector2( 1, 1 )
 rest = Transform2D( -0.998536, 0.0540863, -0.0540863, -0.998536, 0.920059, 13.006 )
 default_length = 70.0
 
@@ -950,13 +962,11 @@ default_length = 80.0
 [node name="right_foot" type="Bone2D" parent="Skeleton2D/Hip/right_leg/right_calf"]
 position = Vector2( 94.0148, 2.5029 )
 rotation = -1.00234
-scale = Vector2( 1, 1 )
 rest = Transform2D( 0.72176, -0.692143, 0.692143, 0.72176, 94.0148, 2.5029 )
 
 [node name="Left_leg" type="Bone2D" parent="Skeleton2D/Hip"]
 position = Vector2( 1.09238, -14.9935 )
 rotation = -3.3385
-scale = Vector2( 1, 1 )
 rest = Transform2D( -0.99396, -0.109741, 0.109741, -0.99396, 1.09238, -14.9935 )
 default_length = 70.0
 __meta__ = {
@@ -966,14 +976,12 @@ __meta__ = {
 [node name="left_calf" type="Bone2D" parent="Skeleton2D/Hip/Left_leg"]
 position = Vector2( 69.3539, -0.187073 )
 rotation = 0.528158
-scale = Vector2( 1, 1 )
 rest = Transform2D( 0.998562, 0.053609, -0.053609, 0.998562, 69.3539, -0.187073 )
 default_length = 80.0
 
 [node name="left_foot" type="Bone2D" parent="Skeleton2D/Hip/Left_leg/left_calf"]
 position = Vector2( 93.7314, -2.73077 )
 rotation = -1.25317
-scale = Vector2( 1, 1 )
 rest = Transform2D( 0.4538, -0.891104, 0.891104, 0.4538, 93.7314, -2.73077 )
 
 [node name="Chest" type="Bone2D" parent="Skeleton2D/Hip"]
@@ -990,14 +998,12 @@ rest = Transform2D( 1, 0, 0, 1, 70.9987, 0.436951 )
 [node name="Arm_Left" type="Bone2D" parent="Skeleton2D/Hip/Chest"]
 position = Vector2( 58.1589, -25.6426 )
 rotation = -2.80649
-scale = Vector2( 1, 1 )
 rest = Transform2D( -0.944377, -0.328866, 0.328866, -0.944377, 58.1589, -25.6426 )
 default_length = 50.0
 
 [node name="Forearm_Left" type="Bone2D" parent="Skeleton2D/Hip/Chest/Arm_Left"]
 position = Vector2( 51.2412, 1.52859 )
 rotation = -0.742412
-scale = Vector2( 1, 1 )
 rest = Transform2D( 0.73684, -0.676067, 0.676067, 0.73684, 51.2412, 1.52859 )
 
 [node name="Hand_Left" type="Bone2D" parent="Skeleton2D/Hip/Chest/Arm_Left/Forearm_Left"]
@@ -1007,14 +1013,12 @@ rest = Transform2D( 1, 0, 0, 1, 36.7599, 0.840359 )
 [node name="Arm_Right" type="Bone2D" parent="Skeleton2D/Hip/Chest"]
 position = Vector2( 57.8881, 18.3566 )
 rotation = 2.97006
-scale = Vector2( 1, 1 )
 rest = Transform2D( -0.966822, 0.25545, -0.25545, -0.966822, 57.8881, 18.3566 )
 default_length = 50.0
 
 [node name="forearm right" type="Bone2D" parent="Skeleton2D/Hip/Chest/Arm_Right"]
 position = Vector2( 46.5721, 0.17984 )
 rotation = -0.109956
-scale = Vector2( 1, 1 )
 rest = Transform2D( 0.993961, -0.109735, 0.109735, 0.993961, 46.5721, 0.17984 )
 default_length = 35.0
 
@@ -1026,3 +1030,6 @@ rest = Transform2D( 1, 0, 0, 1, 38.2605, 1.06693 )
 anims/Jump = SubResource( 6 )
 anims/RESET = SubResource( 7 )
 anims/Test = SubResource( 5 )
+
+[connection signal="body_entered" from="BumpBox" to="." method="_on_BumpBox_body_entered"]
+[connection signal="body_exited" from="BumpBox" to="." method="_on_BumpBox_body_exited"]

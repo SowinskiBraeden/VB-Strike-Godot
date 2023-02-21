@@ -6,6 +6,8 @@ const CAN_JUMP_TIME_LIMIT: int = 1 # seconds we are not allowed to jump
 
 var velocity: Vector2 = Vector2()
 
+var inBumpBox: bool = false
+
 export var PlayerSpeed: int = 125
 export var Smoothness: float = 0.2
 var jump_allowed_timer: int = 0
@@ -29,6 +31,10 @@ func _physics_process(delta):
 
 	velocity.x = lerp(velocity.x, PlayerSpeed * direction, Smoothness)
 	
+	#print(inBumpBox)
+	if Input.is_action_just_pressed("bump") and inBumpBox:
+		GlobalSignals.emit_signal("bumpBall")
+	
 	var motion = velocity * delta
 	var collision = move_and_collide(motion)
 
@@ -38,8 +44,6 @@ func _physics_process(delta):
 		motion = velocity.slide(collision.normal)
 		velocity = move_and_slide(motion)
 
-		print(collision.collider.name)
-
 		if Input.is_action_pressed("ui_up") and is_jump_allowed() and collision.collider.name == "Court":
 			anim.play("Jump")
 			velocity.y -= JUMP_STRENGTH
@@ -47,3 +51,9 @@ func _physics_process(delta):
 
 func is_jump_allowed() -> bool:
 	return (jump_allowed_timer <= 0)
+
+func _on_BumpBox_body_entered(body):
+	if body.get_name() == "Ball": inBumpBox = true
+
+func _on_BumpBox_body_exited(body):
+	if body.get_name() == "Ball": inBumpBox = false
