@@ -799,9 +799,9 @@ script = ExtResource( 6 )
 position = Vector2( 121, 96 )
 shape = SubResource( 9 )
 
-[node name="SetSpiteBox" type="Area2D" parent="."]
+[node name="SetBox" type="Area2D" parent="."]
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="SetSpiteBox"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="SetBox"]
 position = Vector2( 60.25, -56.25 )
 shape = SubResource( 10 )
 
@@ -1033,3 +1033,5 @@ anims/Test = SubResource( 5 )
 
 [connection signal="body_entered" from="BumpBox" to="." method="_on_BumpBox_body_entered"]
 [connection signal="body_exited" from="BumpBox" to="." method="_on_BumpBox_body_exited"]
+[connection signal="body_entered" from="SetBox" to="." method="_on_SetBox_body_entered"]
+[connection signal="body_exited" from="SetBox" to="." method="_on_SetBox_body_exited"]
