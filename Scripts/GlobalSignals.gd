@@ -1,5 +1,5 @@
 extends Node
 
-signal bumpBall
-signal setBall
-signal spikeBall
+signal bumpBall(dir)
+signal setBall(dir)
+signal spikeBall(dir)

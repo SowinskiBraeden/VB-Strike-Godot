@@ -31,21 +31,21 @@ func _physics_process(delta):
 		bump_allowed_timer -= delta
 	
 	var direction = 0
-	if Input.is_action_pressed("p1_left"):
+	if Input.is_action_pressed("p2_left"):
 		direction = -1
-	elif Input.is_action_pressed("p1_right"):
+	elif Input.is_action_pressed("p2_right"):
 		direction = 1
 
 	velocity.x = lerp(velocity.x, PlayerSpeed * direction, Smoothness)
 	
-	if Input.is_action_just_pressed("p1_bump") and inBumpBox and is_bump_allowed():
-		GlobalSignals.emit_signal("bumpBall", 1)
+	if Input.is_action_just_pressed("p2_bump") and inBumpBox and is_bump_allowed():
+		GlobalSignals.emit_signal("bumpBall", -1)
 		bump_allowed_timer = BALL_HIT_TIME_LIMIT
-	if Input.is_action_just_pressed("p1_set") and inSetBox and is_bump_allowed():
-		GlobalSignals.emit_signal("setBall", 1)
+	if Input.is_action_just_pressed("p2_set") and inSetBox and is_bump_allowed():
+		GlobalSignals.emit_signal("setBall", -1)
 		bump_allowed_timer = BALL_HIT_TIME_LIMIT
-	if Input.is_action_just_pressed("p1_spike") and isJumping and inSetBox and is_bump_allowed():
-		GlobalSignals.emit_signal("spikeBall", 1)
+	if Input.is_action_just_pressed("p2_spike") and isJumping and inSetBox and is_bump_allowed():
+		GlobalSignals.emit_signal("spikeBall", -1)
 		bump_allowed_timer = BALL_HIT_TIME_LIMIT
 	
 	var motion = velocity * delta
@@ -59,7 +59,7 @@ func _physics_process(delta):
 		motion = velocity.slide(collision.normal)
 		velocity = move_and_slide(motion)
 
-		if Input.is_action_pressed("p1_jump") and is_jump_allowed() and collision.collider.name == "Court":
+		if Input.is_action_pressed("p2_jump") and is_jump_allowed() and collision.collider.name == "Court":
 			isJumping = true
 			anim.play("Jump")
 			velocity.y -= JUMP_STRENGTH
