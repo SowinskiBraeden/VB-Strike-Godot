@@ -9,6 +9,7 @@ var velocity: Vector2 = Vector2()
 
 var inBumpBox: bool = false
 var inSetBox: bool = false
+var isJumping: bool = false
 
 export var PlayerSpeed: int = 125
 export var Smoothness: float = 0.2
@@ -43,6 +44,9 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("set") and inSetBox and is_bump_allowed():
 		GlobalSignals.emit_signal("setBall")
 		bump_allowed_timer = BALL_HIT_TIME_LIMIT
+	if Input.is_action_just_pressed("spike") and isJumping and inSetBox and is_bump_allowed():
+		GlobalSignals.emit_signal("spikeBall")
+		bump_allowed_timer = BALL_HIT_TIME_LIMIT
 	
 	var motion = velocity * delta
 	var collision = move_and_collide(motion)
@@ -50,10 +54,13 @@ func _physics_process(delta):
 	# Are we on the ground
 	if collision:
 
+		if collision.collider.name == "Court": isJumping = false
+	
 		motion = velocity.slide(collision.normal)
 		velocity = move_and_slide(motion)
 
 		if Input.is_action_pressed("ui_up") and is_jump_allowed() and collision.collider.name == "Court":
+			isJumping = true
 			anim.play("Jump")
 			velocity.y -= JUMP_STRENGTH
 			jump_allowed_timer = CAN_JUMP_TIME_LIMIT

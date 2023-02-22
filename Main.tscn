@@ -10,6 +10,7 @@
 extents = Vector2( 518.5, 10 )
 
 [node name="Node2D" type="Node2D"]
+position = Vector2( 1, 0 )
 script = ExtResource( 5 )
 
 [node name="OuterBound" type="StaticBody2D" parent="."]
@@ -29,7 +30,7 @@ rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 151, 332 )
+position = Vector2( 359, 337 )
 scale = Vector2( 0.75, 0.75 )
 z_index = 5
 z_as_relative = false
@@ -46,5 +47,5 @@ stretch_mode = 1
 z_index = -1
 
 [node name="Ball" parent="." instance=ExtResource( 4 )]
-position = Vector2( -49, -61 )
+position = Vector2( 131, -221 )
 gravity_scale = 5.0
