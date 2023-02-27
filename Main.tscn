@@ -55,5 +55,5 @@ stretch_mode = 1
 z_index = -1
 
 [node name="Ball" parent="." instance=ExtResource( 4 )]
-position = Vector2( 131, -221 )
+position = Vector2( 162, -90 )
 gravity_scale = 5.0
