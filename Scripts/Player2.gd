@@ -38,13 +38,13 @@ func _physics_process(delta):
 
 	velocity.x = lerp(velocity.x, PlayerSpeed * direction, Smoothness)
 	
-	if Input.is_action_just_pressed("p1_bump") and inBumpBox and is_bump_allowed():
+	if Input.is_action_just_pressed("p2_bump") and inBumpBox and is_bump_allowed():
 		GlobalSignals.emit_signal("bumpBall", Vector2(-310, -880))
 		bump_allowed_timer = BALL_HIT_TIME_LIMIT
-	if Input.is_action_just_pressed("p1_set") and inSetBox and is_bump_allowed():
+	if Input.is_action_just_pressed("p2_set") and inSetBox and is_bump_allowed():
 		GlobalSignals.emit_signal("setBall", Vector2(-135, -720))
 		bump_allowed_timer = BALL_HIT_TIME_LIMIT
-	if Input.is_action_just_pressed("p1_spike") and isJumping and inSetBox and is_bump_allowed():
+	if Input.is_action_just_pressed("p2_spike") and isJumping and inSetBox and is_bump_allowed():
 		GlobalSignals.emit_signal("spikeBall", Vector2(-400, 150))
 		bump_allowed_timer = BALL_HIT_TIME_LIMIT
 	
